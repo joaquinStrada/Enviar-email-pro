@@ -1,0 +1,168 @@
+/*!**********************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./app/css/styles.css ***!
+  \**********************************************************************/
+/*-----------------------------------*/
+/* estilos generales */
+/*-----------------------------------*/
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+  box-sizing: border-box;
+  list-style: none;
+}
+
+body {
+  display: block;
+  min-height: 100vh;
+  background: #dedede;
+}
+
+/*-----------------------------------*/
+/* estilos del header */
+/*-----------------------------------*/
+header {
+    display: flex;
+    width: 100%;
+    height: 78px;
+    background: #528FD5;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+header h1 {
+    display: block;
+    color: #fff;
+    padding: 20px 10px;
+}
+
+header .navigation-header {
+    display: block;
+    height: 78px;
+    overflow: hidden;
+}
+header .navigation-header ul {
+    display: block;
+    height: 100%;
+}
+
+header .navigation-header ul li {
+    display: block;
+    height: 100%;
+    float: left;
+}
+
+header .navigation-header ul li a {
+    display: block;
+    height: 100%;
+    color: #fff;
+    text-decoration: none;
+    line-height: 68px;
+    padding: 10px 20px;
+}
+
+header .navigation-header ul li a svg {
+    margin-right: 10px;
+}
+
+header .navigation-header ul li a:hover {
+    background: #75ACEC;
+}
+
+/*-----------------------------------*/
+/* estilos del container */
+/*-----------------------------------*/
+.container {
+    display: flex;
+    width: 100%;
+    height: calc(100vh - 78px);
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.container .col {
+    display: block;
+    width: 50%;
+    height: 100%;
+}
+
+/*-----------------------------------*/
+/* estilos del pagination */
+/*-----------------------------------*/
+.container .col .pagination {
+    display: block;
+    width: 100%;
+    background: #ccc;
+}
+
+.container .col .pagination li {
+    display: inline-block;
+}
+
+.container .col .pagination li a {
+    display: block;
+    background: #2d323c;
+    color: #c5c5c5;
+    text-decoration: none;
+    line-height: 25px;
+    padding: 10px 20px;
+}
+
+.container .col .pagination li a svg {
+    margin-right: 20px;
+    font-size: 25px;
+}
+
+.container .col .pagination li a:hover {
+    background: rgba(45, 50, 60, .5);
+}
+
+.container .col .pagination li a.is-active {
+    background: #000;
+}
+
+/*-----------------------------------*/
+/* estilos del textarea */
+/*-----------------------------------*/
+.container .col textarea {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: #2d323c;
+    background-repeat: no-repeat;
+    background-size: 36px;
+    background-position: calc(100% - 16px) calc(100% - 16px);
+    color: #c5c5c5;
+    font-size: 20px;
+    padding: 10px;
+    resize: none;
+    outline: none;
+    border: 1px solid transparent;
+}
+
+.container .col textarea:focus {
+    border: 1px solid rgba(0, 0, 0, .2);
+}
+
+.container .col textarea.html {
+    background-image: url(../9b8720a7d67247facbf0.svg);
+}
+
+.container .col textarea.css {
+    background-image: url(../a32bdbfef0710339cf84.svg);
+}
+
+.container .col textarea.js {
+    background-image: url(../b17d4ca90545e71d46a4.svg);
+}
+
+/*-----------------------------------*/
+/* estilos del iframe */
+/*-----------------------------------*/
+.container .col .page-iframe {
+    display: block;
+    width: 100%;
+    height: calc(100% + 48.8667px);
+    background: #fff;
+    border: none;
+}
