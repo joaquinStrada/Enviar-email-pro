@@ -8,7 +8,7 @@ export default class View {
 		this.editor = new Editor()
 		this.preview = new Preview()
 
-		this.editor.onChange(e => this.onChangeEditor(e))
+		this.editor.setOnChange(e => this.onChangeEditor(e))
 	}
 
 	setModel(model) {

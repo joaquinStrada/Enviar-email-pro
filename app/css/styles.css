@@ -119,37 +119,35 @@ header .navigation-header ul li a:hover {
 }
 
 /*-----------------------------------*/
-/* estilos del textarea */
+/* estilos del editor */
 /*-----------------------------------*/
-.container .col textarea {
+.container .col .editor {
     display: block;
     width: 100%;
     height: 100%;
-    background-color: #2d323c;
+    position: relative;
+}
+
+.container .col .editor::after {
+    content: '';
+    width: 48px;
+    height: 48px;
     background-repeat: no-repeat;
-    background-size: 36px;
-    background-position: calc(100% - 16px) calc(100% - 16px);
-    color: #c5c5c5;
-    font-size: 20px;
-    padding: 10px;
-    resize: none;
-    outline: none;
-    border: 1px solid transparent;
+    position: absolute;
+    right: 16px;
+    bottom: 16px;
+    z-index: 99;
 }
 
-.container .col textarea:focus {
-    border: 1px solid rgba(0, 0, 0, .2);
-}
-
-.container .col textarea.html {
+.container .col .editor.html::after {
     background-image: url('/app/assets/html5.svg');
 }
 
-.container .col textarea.css {
+.container .col .editor.css::after {
     background-image: url('/app/assets/css3.svg');
 }
 
-.container .col textarea.js {
+.container .col .editor.js::after {
     background-image: url('/app/assets/js.svg');
 }
 

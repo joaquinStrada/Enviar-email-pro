@@ -1,6 +1,7 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin')
 
 const javascriptRules = {
     test: /\.js$/,
@@ -48,6 +49,7 @@ module.exports = {
         }),
         new MiniCssExtractPlugin({
             filename: 'css/styles.bundle.css'
-        })
+        }),
+        new MonacoWebpackPlugin()
     ]
 }
