@@ -50,9 +50,9 @@ export default class Editor {
 			this.codeEditor[key].enabled = false
 			this.pagination[key].classList.contains('is-active') && 
             this.pagination[key].classList.remove('is-active')
-			this.divEditor.classList.contains(key) &&
-            this.divEditor.classList.remove(key)
 		}
+
+		this.cleanEditor()
 
 		// hacemos el cambio
 		this.pagination[page].classList.add('is-active')
@@ -61,7 +61,6 @@ export default class Editor {
 
 		// seteamos el editor segun corresponda
 		const language = page == 'js' ? 'javascript' : page
-		this.divEditor.innerHTML = ''
 		this.editor = monaco.editor.create(this.divEditor, {
 			value: this.codeEditor[page].code,
 			language,
@@ -97,5 +96,21 @@ export default class Editor {
 		})
 
 		this.editor.onDidChangeModelContent(() => this.onChange())
+	}
+
+	cleanEditor() {
+		const { parentNode } = this.divEditor
+		const newEditor = document.createElement('div')
+
+		// agregamos las propiedades
+		newEditor.setAttribute('class', 'editor')
+		newEditor.setAttribute('id', 'editor')
+
+		// remplazamos el editor anterior por el nuevo
+		parentNode.removeChild(this.divEditor)
+		parentNode.appendChild(newEditor)
+
+		// agregamos la nueva referencia
+		this.divEditor = newEditor
 	}
 }
