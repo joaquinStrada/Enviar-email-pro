@@ -164,6 +164,52 @@ header .navigation-header ul li a:hover {
     background: #fff;
     border: none;
 }
+
+/*-----------------------------------*/
+/* estilos personalizados de sweetAlert */
+/*-----------------------------------*/
+.check-sweet {
+    display: none;
+}
+
+.label-check-sweet {
+    display: inline-block;
+    color: #0074D9;
+    padding: 5px 15px 5px 51px;
+    margin: 1em 1.6em .3em;
+    position: relative;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all .3S ease;
+}
+
+.label-check-sweet:hover {
+    background: rgba(0, 116, 217, .2);
+}
+
+.label-check-sweet::before {
+    content: "";
+    display: inline-block;
+    width: 17px;
+    height: 17px;
+    background: none;
+    border: 3px solid #0074D9;
+    border-radius: 4px;
+    position: absolute;
+    left: 17px;
+    top: 3.5px;
+}
+
+.check-sweet:checked + .label-check-sweet {
+    background: #0074D9;
+    color: #fff;
+    padding: 5px 15px;
+    border-radius: 2px;
+}
+
+.check-sweet:checked + .label-check-sweet::before {
+    display: none;
+}
 /*!*******************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/monaco-editor/esm/vs/editor/standalone/browser/accessibilityHelp/accessibilityHelp.css ***!
   \*******************************************************************************************************************************************************/

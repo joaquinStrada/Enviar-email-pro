@@ -39,7 +39,9 @@
     "nodemon": "^2.0.16",
     "rimraf": "^3.0.2",
     "style-loader": "^3.3.1",
+    "sweetalert2": "^11.4.17",
     "webpack": "^5.72.1",
-    "webpack-cli": "^4.9.2"
+    "webpack-cli": "^4.9.2",
+    "zustand": "^4.0.0-rc.1"
   }
 }

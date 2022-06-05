@@ -1,4 +1,4 @@
-import { $id, createHtml } from '../functions'
+import { $id, createHtml } from '../functions/functions'
 
 export default class Preview {
 	constructor() {

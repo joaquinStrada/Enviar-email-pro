@@ -1,5 +1,7 @@
-import { $id } from '../functions'
+import { $id, createOptionsEditor } from '../functions/functions'
 import * as monaco from 'monaco-editor'
+import { getState, subscribe } from '../state'
+import { editorConfig } from '../data/initialSettings'
 
 export default class Editor {
 	constructor() {
@@ -11,10 +13,8 @@ export default class Editor {
 			js: $id('page-js')
 		}
 
-		this.commonEditorOptions = {
-			fontSize: 18,
-			theme: 'vs-dark'
-		}
+		this.commonEditorOptions = createOptionsEditor(getState(), editorConfig.fontFamily)
+		subscribe(state => this.changeOptions(state))
 		
 		this.codeEditor = {
 			html: {
@@ -112,5 +112,13 @@ export default class Editor {
 
 		// agregamos la nueva referencia
 		this.divEditor = newEditor
+	}
+
+	changeOptions(state) {
+		this.commonEditorOptions = createOptionsEditor(state, editorConfig.fontFamily)
+		this.editor.updateOptions({
+			...this.editor.getRawOptions(),
+			...this.commonEditorOptions
+		})
 	}
 }
