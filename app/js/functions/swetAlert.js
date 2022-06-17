@@ -159,3 +159,40 @@ export const modalConfig = (
         >
     `
 }
+
+export const modalEmail = () => {
+	return `
+    <label for="to" class="swal2-html-container" id="swal2-html-container" style="display: block;">
+        Para:
+    </label>
+
+    <input 
+        type="text"
+        class="swal2-input"
+        placeholder="Para"
+        id="to"
+    >
+
+    <label for="from" class="swal2-html-container" id="swal2-html-container" style="display: block;">
+        Desde:
+    </label>
+
+    <input 
+        type="text"
+        class="swal2-input"
+        placeholder="Desde"
+        id="from"
+    >
+
+    <label for="subject" class="swal2-html-container" id="swal2-html-container" style="display: block;">
+        Asunto:
+    </label>
+
+    <input 
+        type="text"
+        class="swal2-input"
+        placeholder="Asunto"
+        id="subject"
+    >
+    `
+}

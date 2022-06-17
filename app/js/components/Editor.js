@@ -121,4 +121,14 @@ export default class Editor {
 			...this.commonEditorOptions
 		})
 	}
+
+	getData() {
+		const data = {}
+
+		data.html = this.codeEditor.html.code
+		data.css = this.codeEditor.css.code
+		data.js = this.codeEditor.js.code
+
+		return data
+	}
 }

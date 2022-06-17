@@ -44,3 +44,29 @@ export const createOptionsEditor = (state, fontFamily) => {
 		fontFamily
 	}
 }
+
+export const validateSendEmail = (from, to, subject, 
+	smtpServer, smtpPort, secure, userEmail, userPass,
+	html, css, js) => {
+	if (from == '' || to == '' || subject == '') {
+		return {
+			error: true,
+			message: 'Porfavor complete correctamente el formulario'
+		}
+	} else if (smtpServer == '' || smtpPort == '' || secure == null || userEmail == '' || userPass == '') {
+		return {
+			error: true,
+			message: 'Porfavor configure correctamente el email del proveedor'
+		}
+	} else if (html == '' && css == '' && js == '') {
+		return {
+			error: true,
+			message: 'Porfavor cree una pagina web para enviar'
+		}
+	} else {
+		return {
+			error: false,
+			message: ''
+		}
+	}
+}

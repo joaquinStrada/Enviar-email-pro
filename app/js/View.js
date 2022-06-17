@@ -2,7 +2,7 @@ import Editor from './components/Editor'
 import Preview from './components/Preview'
 import SweetAlert from './components/SweetAlert'
 
-import { $id } from './functions/functions'
+import { $id, validateSendEmail, createHtml } from './functions/functions'
 import { setState, getState } from './state'
 
 export default class View {
@@ -19,6 +19,8 @@ export default class View {
 		this.editor.setOnChange(e => this.onChangeEditor(e))
 
 		this.btnConfig.addEventListener('click', e => this.onClickSettings(e))
+		this.btnSendEmail.addEventListener('click', e => this.onClickSendEmail(e))
+
 	}
 
 	setModel(model) {
@@ -40,7 +42,51 @@ export default class View {
 			setState(data)
 			getState().saveSettings(data)
 		} catch (err) {
-			console.log(err.message)
+			if (err.message != 'Se ha cancelado la configuracion') {
+				console.error(err)
+			}
 		}
+	}
+
+	async onClickSendEmail(e) {
+		e.preventDefault()
+
+		try {
+			const { from, to, subject } = await this.sweetAlert.showSendEmail()
+			const { smtpServer, smtpPort, secure, userEmail, userPass } = getState()
+			const { html, css, js } = this.editor.getData()
+
+			const { error, message } = validateSendEmail(from, to, subject, smtpServer, smtpPort, secure, userEmail, userPass,
+				html, css, js)
+
+			if (error) {
+				return this.sweetAlert.showNotificationMessage(error, message, 'Enviar email')
+			}
+
+			const pageHtml = createHtml(html, css, js)
+			const data = {
+				from, 
+				to, 
+				subject,
+				smtpServer, 
+				smtpPort, 
+				secure, 
+				userEmail, 
+				userPass,
+				pageHtml
+			}
+
+			this.model.sendEmail(data)
+		} catch (err) {
+			if (err.message != 'Se ha cancelado el envio del email') {
+				console.error(err)
+			}
+		}
+	}
+
+	onSendEmail(data) {
+		const { error, message } = data
+
+		this.sweetAlert.showNotificationMessage(error, message, 'Email enviado')
 	}
 }

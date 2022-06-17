@@ -1,6 +1,6 @@
 import Swal from 'sweetalert2/dist/sweetalert2.all'
 
-import { modalConfig } from '../functions/swetAlert'
+import { modalConfig, modalEmail } from '../functions/swetAlert'
 import { $id } from '../functions/functions'
 import { getState } from '../state'
 
@@ -53,5 +53,52 @@ export default class SweetAlert {
 				}
 			})
 		}) 
+	}
+
+	showSendEmail() {
+		const html = modalEmail()
+
+		return new Promise((resolve, reject) => {
+			const swalSendEmail = new Swal({
+				title: 'Configuraciones',
+				html,
+				icon: 'info',
+				confirmButtonText: 'Enviar',
+				padding: '1rem',
+				backdrop: true,
+				position: 'center',
+				showCancelButton: true,
+				cancelButtonText: 'Cancelar',
+				preConfirm: () => {
+					return {
+						to: $id('to').value,
+						from: $id('from').value,
+						subject: $id('subject').value
+					}
+				}
+			})
+
+			swalSendEmail.then(res => {
+				if (res.value) {
+					resolve(res.value)
+				} else {
+					reject(new Error('Se ha cancelado el envio del email'))
+				}
+			})
+		})
+	}
+
+	showNotificationMessage(error, message, title) {
+		new Swal({
+			title,
+			icon: error ? 'error' : 'success',
+			text: message,
+			padding: '1rem',
+			toast: true,
+			timer: 5000,
+			timerProgressBar: true,
+			position: 'top-end',
+			showConfirmButton: false
+		})
 	}
 }
